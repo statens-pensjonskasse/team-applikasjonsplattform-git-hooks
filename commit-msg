@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+# Git hook script for å enforce Team applikasjonsplattform sin utgave
+# av conventional commits
+
+# echo "Sjekker commit-meldinger..."
+
+COMMIT_CONVENTION_TYPES="build|chore|ci|docs|feat|fix|perf|refactor|revert|test"
+COMMIT_CONVENTION_SEPARATOR=":"
+COMMIT_CONVENTION_REGEX="^($COMMIT_CONVENTION_TYPES)([[(]"$'(\w+)'"[])]|)(!|)$COMMIT_CONVENTION_SEPARATOR ?([A-Z]+-[0-9]+|#[0-9]+|#) .+"
+
+# strip commit message of comments
+INPUT_COMMIT_MESSAGE=$(sed -e "s/^#.*$//g" "$1")
+
+# test against commit convention regex
+if [[ $INPUT_COMMIT_MESSAGE =~ $COMMIT_CONVENTION_REGEX ]]; then
+	# echo "OK"
+	exit 0 # All good
+else
+        echo
+		echo "ERROR: Commit-melding matcher ikke konvensjon."
+        echo
+		echo "Typer: $COMMIT_CONVENTION_TYPES"
+		echo "Format: <type><(valgfritt scope)>: <issueref>> <commit message>"
+		echo "Eksempler:"
+		echo "    feat(cool stuff): PLAT-123 added a cool feature"
+		echo "    fix(not so cool stuff): #42 removed silly bug"
+		echo "    feat: # trenger ikke jira"
+        exit 1
+fi
