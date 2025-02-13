@@ -21,6 +21,7 @@ curl -sf https://raw.githubusercontent.com/statens-pensjonskasse/team-applikasjo
 chmod 755 "$TMPDIR/commit-msg" ;
 find . -type d -name .git -execdir cp -p -v "$TMPDIR/commit-msg" .git/hooks/ \; ;
 unset TMPDIR
+```
 
 ## Global lokal config
 
