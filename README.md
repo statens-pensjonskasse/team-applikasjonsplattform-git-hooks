@@ -3,7 +3,9 @@
 Enforcer teamets commit-meldinger
 
 Husk at hooks-katalogen ikke tas med når du kloner, så
-for å få sjekkene lokalt, må du legge til i alle repoene dine etter at du har klonet.
+for å få sjekkene lokalt, er et alternativ å
+
+## Legge til i hvert repo loalt
 
 For ett repo, når du står i rotkatalogen:
 
@@ -19,3 +21,11 @@ curl -sf https://raw.githubusercontent.com/statens-pensjonskasse/team-applikasjo
 chmod 755 "$TMPDIR/commit-msg" ;
 find . -type d -name .git -execdir cp -p -v "$TMPDIR/commit-msg" .git/hooks/ \; ;
 unset TMPDIR
+
+## Global lokal config
+
+Det er også mulig å legge til dette repoet globalt i lokal git config med noe ala:
+
+`git config --global core.hooksPath /path/to/my/centralized/hooks`
+
+Merk at dette vil disable alle hooks du har lagt til i dine lokale repos.
