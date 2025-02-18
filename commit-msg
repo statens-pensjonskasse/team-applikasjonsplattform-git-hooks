@@ -3,11 +3,13 @@
 # Git hook script for å enforce Team applikasjonsplattform sin utgave
 # av conventional commits
 
+[[ -n "$DEBUG" ]] && set -x # turn -x on if DEBUG is set to a non-empty string
+
 # echo "Sjekker commit-meldinger..."
 
 COMMIT_CONVENTION_TYPES="build|chore|ci|docs|feat|fix|perf|refactor|revert|test"
 COMMIT_CONVENTION_SEPARATOR=":"
-COMMIT_CONVENTION_REGEX="^($COMMIT_CONVENTION_TYPES)([[(]"$'(\w+)'"[])]|)(!|)$COMMIT_CONVENTION_SEPARATOR ?([A-Z]+-[0-9]+|#[0-9]+|#) .+"
+COMMIT_CONVENTION_REGEX="^($COMMIT_CONVENTION_TYPES)([(][-_ a-zA-Z0-9]+[)]|)${COMMIT_CONVENTION_SEPARATOR} ?([A-Z]+-[0-9]+|#[0-9]+|nojira) .+"
 
 # strip commit message of comments
 INPUT_COMMIT_MESSAGE=$(sed -e "s/^#.*$//g" "$1")
@@ -21,10 +23,10 @@ else
 		echo "ERROR: Commit-melding matcher ikke konvensjon."
         echo
 		echo "Typer: $COMMIT_CONVENTION_TYPES"
-		echo "Format: <type><(valgfritt scope)>: <issueref>> <commit message>"
+		echo "Format: <type><(valgfritt scope)>: <issueref|nojira> <commit message>"
 		echo "Eksempler:"
 		echo "    feat(cool stuff): PLAT-123 added a cool feature"
 		echo "    fix(not so cool stuff): #42 removed silly bug"
-		echo "    feat: # trenger ikke jira"
+		echo "    feat: nojira trenger ikke jira"
         exit 1
 fi
