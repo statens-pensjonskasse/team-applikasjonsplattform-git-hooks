@@ -20,7 +20,7 @@ if [[ $INPUT_COMMIT_MESSAGE =~ $COMMIT_CONVENTION_REGEX ]]; then
 	exit 0 # All good
 else
         echo
-		echo "ERROR: Commit-melding matcher ikke konvensjon."
+		echo "ERROR: Commit-melding \"$INPUT_COMMIT_MESSAGE\" matcher ikke konvensjon."
         echo
 		echo "Typer: $COMMIT_CONVENTION_TYPES"
 		echo "Format: <type><(valgfritt scope)>: <issueref|nojira> <commit message>"

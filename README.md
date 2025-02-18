@@ -3,7 +3,7 @@
 Enforcer teamets commit-meldinger
 
 Husk at hooks-katalogen ikke tas med når du kloner, så
-for å få sjekkene lokalt, er et alternativ å
+for å få sjekkene lokalt, er et alternativ å:
 
 ## Legge til i hvert repo loalt
 
@@ -30,3 +30,9 @@ Det er også mulig å legge til dette repoet globalt i lokal git config med noe 
 `git config --global core.hooksPath /path/to/my/centralized/hooks`
 
 Merk at dette vil disable alle hooks du har lagt til i dine lokale repos.
+
+## Lokal utvikling
+
+Kjør `make test`for noen enkle tester av commit-meldingene.
+
+Legg evt. til nye tester som filer i `test/`.
