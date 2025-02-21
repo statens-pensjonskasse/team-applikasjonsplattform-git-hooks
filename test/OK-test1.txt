@@ -1,1 +1,1 @@
-feat(cool stuff): PLAT-123 added a cool feature
+feat(cool stuff): PLAT-123 med scope og jiraref

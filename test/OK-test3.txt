@@ -1,1 +1,1 @@
-feat: nojira trenger ikke jira
+feat: # uten scope, med eksplisitt 'no issueref'

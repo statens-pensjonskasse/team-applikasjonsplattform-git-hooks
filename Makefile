@@ -8,4 +8,5 @@ help:
 
 test: ## Kjører noen enkle tester
 	for f in test/OK-* ; do echo "Kjører $${f}..." ; ./commit-msg "$$f" ; done
-	for f in test/FAIL-* ; do echo "Kjører $${f}..." ; ./commit-msg "$$f" ; test $$? -ne 1 && exit 1; done
+	for f in test/FAIL-* ; do echo "Kjører $${f}..." ; ./commit-msg "$$f" ; test $$? -ne 1 && exit 1; done ; exit 0
+	@echo "Tester kjørt OK"
