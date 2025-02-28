@@ -1,0 +1,1 @@
+Merge branch 'hotfix/PLAT-5307-rabbitmq-prometheus-metrics' into test

@@ -1,13 +1,17 @@
-# Team applikasjonsplattform git hooks
+# Enforce conventional commits git hooks
 
-Enforcer teamets commit-meldinger
+Enforcer commit-meldinger til å følge [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
-Husk at hooks-katalogen ikke tas med når du kloner, så
-for å få sjekkene lokalt, er et alternativ å:
+Hooks-katalogen tas som kjent ikke med når du kloner, så
+for å få sjekkene lokalt, må de legges inn i hooks-katalogen i hvert repo du vil ha de i.
 
-## Legge til i hvert repo loalt
+## Installasjon uten å klone repoet
 
-For ett repo, når du står i rotkatalogen:
+### Standard utgave som ikke krever issueref
+
+#### Linux
+
+For ett repo, når du står i rotkatalogen, kjør følgende:
 
 ```bash
 curl -sf https://raw.githubusercontent.com/statens-pensjonskasse/team-applikasjonsplattform-git-hooks/refs/heads/main/commit-msg >| .git/hooks/commit-msg && chmod 755 .git/hooks/commit-msg
@@ -23,13 +27,37 @@ find . -type d -name .git -execdir cp -p -v "$TMPDIR/commit-msg" .git/hooks/ \; 
 unset TMPDIR
 ```
 
+### Strict utgave som krever issueref
+
+#### Linux
+
+For ett repo, når du står i rotkatalogen, kjør følgende:
+
+```bash
+curl -sf https://raw.githubusercontent.com/statens-pensjonskasse/team-applikasjonsplattform-git-hooks/refs/heads/main/commit-msg-strict >| .git/hooks/commit-msg && chmod 755 .git/hooks/commit-msg
+```
+
+For å legge til i alle utsjekkede repoer du har under stående katalog:
+
+```bash
+TMPDIR=$(mktemp -d) ;
+curl -sf https://raw.githubusercontent.com/statens-pensjonskasse/team-applikasjonsplattform-git-hooks/refs/heads/main/commit-msg-strict > "$TMPDIR/commit-msg" ;
+chmod 755 "$TMPDIR/commit-msg" ;
+find . -type d -name .git -execdir cp -p -v "$TMPDIR/commit-msg" .git/hooks/ \; ;
+unset TMPDIR
+```
+
+## Installasjon dersom du har klonet repoet
+
+TODO
+
 ## Global lokal config
 
-Det er også mulig å legge til dette repoet globalt i lokal git config med noe ala:
+Det er også mulig å legge til dette repoet globalt i din git config ved å klone dette repoet og sette:
 
-`git config --global core.hooksPath /path/to/my/centralized/hooks`
+`git config --global core.hooksPath /sti/til/dette/repoet`
 
-Merk at dette vil disable alle hooks du har lagt til i dine lokale repos.
+Merk at dette vil disable alle hooks du har lagt til i dine lokale repos, og gjøre det vanskelig å ha hooks fra andre kilder.
 
 ## Lokal utvikling
 
