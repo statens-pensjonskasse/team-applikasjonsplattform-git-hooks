@@ -49,7 +49,19 @@ unset TMPDIR
 
 ## Installasjon dersom du har klonet repoet
 
-TODO
+Kjør `./install.sh` fra dette repoets katalog.
+
+Bruk `-h` for hjelp, men kort fortalt kan du angi `-s` for å få strict-utgaven (som krever issueref)
+og `-r` for å installere rekursivt under angitt katalog. F.eks.
+
+```bash
+# Strict-versjon i ett repo
+./install.sh -s ~/src/INFRA/puppet-control
+# Strict-versjon i alle repos under INFRA-katalogen
+./install.sh -s -r ~/src/INFRA
+# Standard-versjon i alle repos under src-katalogen
+./install.sh -r ~/src
+```
 
 ## Global lokal config
 

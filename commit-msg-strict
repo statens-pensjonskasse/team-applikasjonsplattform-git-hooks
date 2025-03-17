@@ -27,6 +27,6 @@ else
 		echo "Eksempler:"
 		echo "    feat(cool stuff): PLAT-123 added a cool feature"
 		echo "    fix(not so cool stuff): #42 removed silly bug"
-		echo "    feat: noref trenger ikke jira"
+		echo "    feat: noref Trenger ikke jira, men må være eksplisitt"
         exit 1
 fi
