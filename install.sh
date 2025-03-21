@@ -96,7 +96,7 @@ fi
 if [[ $RECURSIVE = true ]] ; then
     RECURSIVE_TEXT="REKURSIVT"
 fi
-if ! PromptToContinue "Ønsker du å installere $FILENAME hooks $RECURSIVE_TEXT in $INSTALLDIR?" ; then
+if ! PromptToContinue "Ønsker du å installere hooken $FILENAME ${RECURSIVE_TEXT:-} i $INSTALLDIR?" ; then
     exit 1
 fi
 
