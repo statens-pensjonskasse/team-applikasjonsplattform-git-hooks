@@ -88,9 +88,9 @@ INSTALLDIR="${1:-}"
 [[ -d "$INSTALLDIR" ]] || Fail "Installasjonskatalog $INSTALLDIR eksisterer ikke."
 
 if [[ "$STRICT_VERSION" = true ]]; then
-    FILENAME="commit-msg-strict"
+    FILENAME="$(dirname "$(realpath "$0")")/commit-msg-strict"
 else
-    FILENAME="commit-msg"
+    FILENAME="$(dirname "$(realpath "$0")")/commit-msg"
 fi
 
 if [[ $RECURSIVE = true ]] ; then
