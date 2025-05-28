@@ -41,6 +41,7 @@ test_msg() {
     fi
 }
 
+echo "\nTesting commit-msg hook"
 test_commit_msg "jalla: #1 ikke-godkjent scope" $FAIL
 test_commit_msg "feat #1 mangler kolon" $FAIL
 test_commit_msg "feat(cool stuff): PLAT-123 med scope og jiraref" $PASS
@@ -49,6 +50,7 @@ test_commit_msg "feat: # uten scope, med eksplisitt 'no issueref'" $PASS
 test_commit_msg "Merge branch 'hotfix/PLAT-5307-rabbitmq-prometheus-metrics' into test" $PASS
 test_commit_msg "feat: har ikke issueref, men funker" $PASS
 
+echo "\nTesting commit-msg-strict hook"
 test_commit_msg_strict "feat: added a cool feature" $FAIL
 test_commit_msg_strict "feat!: added a cool feature" $FAIL
 test_commit_msg_strict "feat(scope)!: added a cool feature" $FAIL
