@@ -61,5 +61,6 @@ test_commit_msg_strict "feat(scope): added a cool feature (noref)" $PASS
 test_commit_msg_strict "feat(scope): added a cool feature (PLAT-123)" $PASS
 test_commit_msg_strict "feat(scope)!: added a cool feature (PLAT-123)" $PASS
 test_commit_msg_strict "feat(scope)!: added a cool feature (#42)" $PASS
+test_commit_msg_strict "Merge branch 'hotfix/PLAT-5307-rabbitmq-prometheus-metrics' into test" $PASS
 
 return $EXIT_CODE
