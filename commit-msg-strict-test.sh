@@ -15,11 +15,17 @@ test_commit_msg() {
 
     rm -f "$tmpfile"
 
+    if [ $expected -eq 0 ]; then
+        expected_result="VALID MSG"
+    else
+        expected_result="INVALID MSG"
+    fi
+
     if [ $result -ne $expected ]; then
         echo "❌ Test failed for commit message:"
         echo "   \"$msg\""
     else
-        echo "✅ Test passed: \"$msg\""
+        echo "✅ Test passed ($expected_result): \"$msg\""
     fi
 }
 
