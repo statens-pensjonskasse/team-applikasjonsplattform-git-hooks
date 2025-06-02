@@ -49,6 +49,7 @@ test_commit_msg "fix(not so cool stuff): #42 med scope og github issueref" $PASS
 test_commit_msg "feat: # uten scope, med eksplisitt 'no issueref'" $PASS
 test_commit_msg "Merge branch 'hotfix/PLAT-5307-rabbitmq-prometheus-metrics' into test" $PASS
 test_commit_msg "feat: har ikke issueref, men funker" $PASS
+test_commit_msg "fix(breaking)!: fix broken thing" $PASS
 
 echo "\nTesting commit-msg-strict hook"
 test_commit_msg_strict "feat: added a cool feature" $FAIL

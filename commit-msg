@@ -7,7 +7,7 @@
 # echo "Sjekker commit-meldinger..."
 
 COMMIT_CONVENTION_TYPES="build|chore|ci|docs|feat|fix|perf|refactor|revert|test"
-COMMIT_CONVENTION_SEPARATOR=":"
+COMMIT_CONVENTION_SEPARATOR="(!|):"
 COMMIT_CONVENTION_REGEX="^($COMMIT_CONVENTION_TYPES)([(][-_ a-zA-Z0-9]+[)]|)${COMMIT_CONVENTION_SEPARATOR} .+"
 MERGE_REGEX="^Merge branch '.*' into "
 # strip commit message of comments
@@ -18,14 +18,15 @@ if [[ $INPUT_COMMIT_MESSAGE =~ $COMMIT_CONVENTION_REGEX || $INPUT_COMMIT_MESSAGE
 	# echo "OK"
 	exit 0 # All good
 else
-        echo
-		echo "ERROR: Commit-melding \"$INPUT_COMMIT_MESSAGE\" matcher ikke konvensjon."
-        echo
-		echo "Typer: $COMMIT_CONVENTION_TYPES"
-		echo "Format: <type><(valgfritt scope)>: <commit message>"
-		echo "Eksempler:"
-		echo "    feat(cool stuff): added a cool feature"
-		echo "    fix(not so cool stuff): removed silly bug"
-		echo "    feat: PLAT-123 trenger ikke jiraref, men kan/bør ha"
-        exit 1
+	echo
+	echo "ERROR: Commit-melding \"$INPUT_COMMIT_MESSAGE\" matcher ikke konvensjon."
+	echo
+	echo "Typer: $COMMIT_CONVENTION_TYPES"
+	echo "Format: <type><(valgfritt scope)>: <commit message>"
+	echo "Eksempler:"
+	echo "    feat(cool stuff): added a cool feature"
+	echo "    fix(not so cool stuff): removed silly bug"
+	echo "    feat: PLAT-123 trenger ikke jiraref, men kan/bør ha"
+	echo "    feat(refactor)!: refactor breaking change"
+	exit 1
 fi
