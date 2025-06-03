@@ -76,3 +76,17 @@ Merk at dette vil disable alle hooks du har lagt til i dine lokale repos, og gj�
 Kjør `make test`for noen enkle tester av commit-meldingene.
 
 Legg evt. til nye tester som filer i `test/`.
+
+## GitHub Repository Rulesets
+
+commit-msg / conventional-commits (valgfritt issue ref i slutten)
+
+```sh
+^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([\w\-\.]+\))?(!)?: [^()]+(\(([A-Z]+-[0-9]+|#[0-9]+|noref)\))?(.+)?|Merge pull request #\d+ from .+
+```
+
+commit-msg-strict / conventional-commits-strict (må ha issue ref eller eksplisit noref i slutten)
+
+```sh
+^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([\w\-\.]+\))?(!)?: [^()]+(\(([A-Z]+-[0-9]+|#[0-9]+|noref)\))(.+)?|Merge pull request #\d+ from .+
+```

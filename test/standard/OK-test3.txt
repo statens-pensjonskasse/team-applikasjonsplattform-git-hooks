@@ -1,1 +1,0 @@
-feat: # uten scope, med eksplisitt 'no issueref'
