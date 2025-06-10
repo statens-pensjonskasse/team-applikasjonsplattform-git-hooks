@@ -82,11 +82,11 @@ Legg evt. til nye tester som filer i `test/`.
 commit-msg / conventional-commits (valgfritt issue ref i slutten)
 
 ```sh
-^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([\w\-\.]+\))?(!)?: [^()]+(\(([A-Z]+-[0-9]+|#[0-9]+|noref)\))?(.+)?|Merge pull request #\d+ from .+
+^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([\w\-\.]+\))?(!)?: [^()]+(\(([A-Z]+-[0-9]+|#[0-9]+|noref)\))?(\r?\n?.*)*|Merge pull request #\d+ from .+
 ```
 
 commit-msg-strict / conventional-commits-strict (må ha issue ref eller eksplisit noref i slutten)
 
 ```sh
-^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([\w\-\.]+\))?(!)?: [^()]+(\(([A-Z]+-[0-9]+|#[0-9]+|noref)\))(.+)?|Merge pull request #\d+ from .+
+^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([\w\-\.]+\))?(!)?: [^()]+(\(([A-Z]+-[0-9]+|#[0-9]+|noref)\))(\r?\n?.*)*|Merge pull request #\d+ from .+
 ```
