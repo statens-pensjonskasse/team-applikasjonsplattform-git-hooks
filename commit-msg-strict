@@ -8,9 +8,10 @@
 # echo "Sjekker commit-meldinger..."
 COMMIT_CONVENTION_TYPES="(build|chore|ci|docs|feat|fix|perf|refactor|revert|test)"
 COMMIT_SCOPE="(\\([a-zA-Z0-9 _-]+\\))?!?:"
-COMMIT_REF="\\((#[0-9]+|noref|[A-Z]+-[0-9]+)\\)$"
+COMMIT_REF="\\((#[0-9]+|noref|[A-Z]+-[0-9]+)\\)"
 COMMIT_MSG=" .+ "
-COMMIT_CONVENTION_REGEX="^${COMMIT_CONVENTION_TYPES}${COMMIT_SCOPE}${COMMIT_MSG}${COMMIT_REF}"
+OPTIONAL_BODY=".*"
+COMMIT_CONVENTION_REGEX="^${COMMIT_CONVENTION_TYPES}${COMMIT_SCOPE}${COMMIT_MSG}${COMMIT_REF}${OPTIONAL_BODY}"
 MERGE_REGEX="^Merge branch '.*' into "
 
 # strip commit message of comments
